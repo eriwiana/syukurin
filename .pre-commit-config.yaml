@@ -1,0 +1,35 @@
+default_language_version:
+  python: python3.9.13
+repos:
+  - repo: 'https://github.com/pre-commit/pre-commit-hooks'
+    rev: v4.4.0
+    hooks:
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: name-tests-test
+      - id: trailing-whitespace
+  - repo: 'https://github.com/asottile/reorder_python_imports'
+    rev: v3.9.0
+    hooks:
+      - id: reorder-python-imports
+        args: [
+          '--application-directories', '.:src',
+          '--py39-plus',
+        ]
+  - repo: 'https://github.com/PyCQA/flake8'
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-bugbear
+          - flake8-comprehensions
+          - flake8-simplify
+  - repo: 'https://github.com/psf/black'
+    rev: 22.12.0
+    hooks:
+      - id: black
+        args: ['--line-length=79']
