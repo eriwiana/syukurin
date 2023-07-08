@@ -1,10 +1,10 @@
 from tortoise import fields
 from tortoise.contrib.pydantic import pydantic_model_creator
 
-from .base import BaseModel
+from .base import BaseInvitationModel, Message
 
 
-class Wedding(BaseModel):
+class Wedding(BaseInvitationModel):
     """
     The Wedding model
     """
@@ -13,13 +13,12 @@ class Wedding(BaseModel):
     bride_parent_name = fields.CharField(max_length=64)
     groom_name = fields.CharField(max_length=64)
     groom_parent_name = fields.CharField(max_length=64)
-    akad_datetime = fields.DatetimeField()
-    reception_datetime = fields.DatetimeField()
-    venue_name = fields.CharField(max_length=64)
-    venue_maps = fields.CharField(max_length=40)
-    active_until = fields.DatetimeField()
-    audio_link = fields.TextField(null=True)
-    video_link = fields.TextField(null=True)
+    akad_start_datetime = fields.DatetimeField()
+    akad_end_datetime = fields.DatetimeField(null=True)
+
+    messages: fields.ManyToManyRelation["Message"] = fields.ManyToManyField(
+        "models.Message", related_name="messages", through="wedding_message"
+    )
 
 
 WeddingDetailPydantic = pydantic_model_creator(Wedding, name="WeddingDetail")
