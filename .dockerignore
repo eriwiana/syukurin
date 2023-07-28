@@ -1,0 +1,14 @@
+__pycache__
+env
+.env
+venv
+.venv
+.vscode
+.editorconfig
+.flake8
+.git
+.gitignore
+.pre-commit-config.yaml
+db.sqlite3
+LICENSE
+README.md
