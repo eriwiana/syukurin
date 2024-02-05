@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.95.1"
+fastapi = "^0.109.1"
 tortoise-orm = "^0.19.3"
 pre-commit = "^3.3.1"
 fastapi-restful = "^0.4.3"
